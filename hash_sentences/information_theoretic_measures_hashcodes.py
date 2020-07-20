@@ -1,4 +1,4 @@
-import corex
+from . import total_correlations_estimation
 import numpy as np
 import time
 
@@ -182,9 +182,9 @@ class InformationTheoreticMeasuresHashcodes:
 
         joint_entropy_approx = curr_e_sum
 
-        layer1 = corex.Corex(n_hidden=num_hidden_var,
-                             seed=0,
-                             max_iter=max_num_iter)
+        layer1 = total_correlations_estimation.TotalCorrelationsEstimation(n_hidden=num_hidden_var,
+                                                                           seed=0,
+                                                                           max_iter=max_num_iter)
         layer1.fit(hashcodes)
         # print layer1.tcs
         tc_lb = layer1.tcs.sum()

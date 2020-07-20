@@ -1,17 +1,17 @@
 import time
 import numpy as np
-import information_theoretic_measures_hashcodes as itmh
+from . import information_theoretic_measures_hashcodes as itmh
 import scipy.special as scipy_special
 import itertools
 import numpy.random as npr
-import parallel_computing as pc
-import parallel_computing_wrapper as pcw
+from . import parallel_computing as pc
+from . import parallel_computing_wrapper as pcw
 import math
-import random_k_nearest_neighbors_hash as rknn
-import random_maximum_margin_hash as rmm
-import random_neural_hash as rneural
-from divide_conquer_optimize_split import DivideConquerOptimizeSplit
-import embed_path_tuples as ept
+from . import random_k_nearest_neighbors_hash as rknn
+from . import random_maximum_margin_hash as rmm
+from . import random_neural_hash as rneural
+from .divide_conquer_optimize_split import DivideConquerOptimizeSplit
+from . import embed_path_tuples as ept
 import pickle
 
 

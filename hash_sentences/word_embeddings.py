@@ -2,7 +2,7 @@ import numpy as np
 import time
 import math
 import numpy.random as npr
-import nonascii_text_processing as ntp
+from . import nonascii_text_processing as ntp
 
 
 class WordEmbeddings:

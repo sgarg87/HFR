@@ -1,4 +1,4 @@
-import hash_sentences
+from .hash_sentences import HashSentences
 import argparse
 import numpy as np
 
@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     sentences = read_sentences(file_path=args.file_path)
 
-    hash_sentences_obj = hash_sentences.HashSentences(
+    hash_sentences_obj = HashSentences(
         hash_func='RkNN',
         num_cores=args.cores,
         alpha=128,

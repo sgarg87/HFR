@@ -1,9 +1,9 @@
 import math
 import numpy as np
 import nltk
-import text_kernel as tk
-import expanding_contractions as ec
-import hash_function_representations_info_theoretic_optimization as hf_ito
+from . import text_kernel as tk
+from . import expanding_contractions as ec
+from . import hash_function_representations_info_theoretic_optimization as hf_ito
 
 
 file_path = 'hash_sentences_model'
