@@ -6,7 +6,7 @@ import expanding_contractions as ec
 import hash_function_representations_info_theoretic_optimization as hf_ito
 
 
-file_path = 'hash_ngram_model'
+file_path = 'hash_sentences_model'
 
 
 class HashSentences:
@@ -15,31 +15,28 @@ class HashSentences:
             self,
             hash_func,
             num_cores=1,
-            is_wordvec_large=True,
             alpha=32,
             alpha_compute_per_cluster_size__log_scale=4.0,
             is_bert_embedding=False,
             is_zero_kernel_compute_outside_cluster=False,
             max_hamming_dist_bits_frac_for_neighborhood=0.4,
+            wordvec_file_path=None
     ):
         self.hash_func = hash_func
         self.num_cores = num_cores
         self.data_operations_obj = None
         self.min_freq_ngram = 2
         self.is_zero_kernel_compute_outside_cluster = is_zero_kernel_compute_outside_cluster
-        self.is_wordvec_large = is_wordvec_large
         self.alpha = alpha
         self.alpha_compute_per_cluster_size__log_scale = alpha_compute_per_cluster_size__log_scale
         self.is_bert_embedding = is_bert_embedding
         self.max_hamming_dist_bits_frac_for_neighborhood = max_hamming_dist_bits_frac_for_neighborhood
+        assert wordvec_file_path is not None
+        self.wordvec_file_path = wordvec_file_path
 
     def init_data_operations_obj(self, is_edge_label, is_custom_p_weights=True):
 
         if self.data_operations_obj is None:
-            if self.is_wordvec_large:
-                self.wordvec_file_path = '../glove.840B.300d.txt'
-            else:
-                self.wordvec_file_path = '../glove.6B.100d.txt'
 
             lamb = 0.95
             # lamb = 0.9
@@ -93,7 +90,7 @@ class HashSentences:
                     p=p,
                     is_normalize_kernel_fr_hashcodes=is_normalize_kernel_fr_hashcodes,
                     p_weights=p_weights,
-                    is_wordvec_large=self.is_wordvec_large,
+                    is_wordvec_large=False,
                     wordvec_file_path=self.wordvec_file_path,
                 )
             del is_normalize_kernel_fr_hashcodes

@@ -13,22 +13,24 @@ def read_sentences(file_path):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--cores", default=1, help="number of cores", type=int)
-    parser.add_argument("-fp", "--file_path", default=1, help="file path for text sentences")
+    parser.add_argument("-fp", "--file_path", help="file path for text sentences")
+    parser.add_argument("-g", "--glove_file_path", help="file path for glove 100D vectors")
     args = parser.parse_args()
     del parser
 
     print('num_cores', args.cores)
     print('file_path', args.file_path)
+    print('glove_file_path', args.glove_file_path)
 
     sentences = read_sentences(file_path=args.file_path)
 
     hash_sentences_obj = hash_sentences.HashSentences(
         hash_func='RkNN',
         num_cores=args.cores,
-        is_wordvec_large=False,
         alpha=128,
         is_bert_embedding=False,
         is_zero_kernel_compute_outside_cluster=False,
+        wordvec_file_path=args.glove_file_path,
     )
 
     sentence_hashcodes, _, _, _ = hash_sentences_obj.main(
