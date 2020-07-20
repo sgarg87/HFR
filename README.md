@@ -1,3 +1,2 @@
 # HFR
-Contact at sahil.garg.cs@gmail.com for access to the code and datasets. The repository is large in size, to be shared on github. I would be happy to provide dropbox link, and guidance for easy use of the code.
-
+python3 -m hash_sentences -c 7 -f ./hash_sentences/txt_data/sample_small.txt -g ../../glove.6B.100d.txt 
