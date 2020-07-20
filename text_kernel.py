@@ -1,22 +1,22 @@
 import scipy.sparse as ss
 import multiprocessing as mp
-from . import parallel_computing as pc
+import parallel_computing as pc
 import numpy as np
 import time
 import math
 import scipy.special
 import scipy.io
 from nltk.corpus import wordnet
-from . import word_embeddings as we
+import word_embeddings as we
 
 
 is_cython = True
 if is_cython:
     import pyximport; pyximport.install()
-    from . import subsequence_kernel_cython as skc
-    from . import cython_wordvec_kernel_dialogue_modeling as cwkdm
+    import subsequence_kernel_cython as skc
+    import cython_wordvec_kernel_dialogue_modeling as cwkdm
 else:
-    from . import wordvec_kernel_dialogue_modeling as wkdm
+    import wordvec_kernel_dialogue_modeling as wkdm
 
 
 class TextKernel:

@@ -1,10 +1,10 @@
 import math
 import numpy as np
 import nltk
-import biopathways_extraction_in_isi_isd.text_kernel as tk
-import biopathways_extraction_in_isi_isd.expanding_contractions as ec
-from biopathways_extraction_in_isi_isd import bert_text_kernel as btk
-import biopathways_extraction_in_isi_isd.hash_function_representations_info_theoretic_optimization as hf_ito
+import text_kernel as tk
+import expanding_contractions as ec
+import hash_function_representations_info_theoretic_optimization as hf_ito
+
 
 file_path = 'hash_ngram_model'
 
@@ -521,7 +521,7 @@ class HashSentences:
 
         assert sentences_hashcodes.shape[0] == sentences.size
         assert sentences_hashcodes.shape[1] == num_hash_bits
-        np.save('sentences_hashcodes', sentences_hashcodes)
+        # np.save('sentences_hashcodes', sentences_hashcodes)
 
         return sentences_hashcodes, neighboring_clusters, clusters, rnd_subsel_bits_for_clustering_objs
 

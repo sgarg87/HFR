@@ -1,6 +1,6 @@
 import numpy as np
 import numpy.random as npr
-from . import word_embeddings as we
+import word_embeddings as we
 import math
 
 

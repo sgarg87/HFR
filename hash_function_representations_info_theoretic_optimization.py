@@ -1,25 +1,18 @@
 import time
 import numpy as np
-from . import information_theoretic_measures_hashcodes as itmh
+import information_theoretic_measures_hashcodes as itmh
 import scipy.special as scipy_special
 import itertools
 import numpy.random as npr
-from . import parallel_computing as pc
-from . import parallel_computing_wrapper as pcw
+import parallel_computing as pc
+import parallel_computing_wrapper as pcw
 import math
-from . import random_k_nearest_neighbors_hash as rknn
-from . import random_maximum_margin_hash as rmm
-from . import random_neural_hash as rneural
-# import random_neural_hash_images as rneural_images
-from .divide_conquer_optimize_split import DivideConquerOptimizeSplit
-from . import embed_path_tuples as ept
+import random_k_nearest_neighbors_hash as rknn
+import random_maximum_margin_hash as rmm
+import random_neural_hash as rneural
+from divide_conquer_optimize_split import DivideConquerOptimizeSplit
+import embed_path_tuples as ept
 import pickle
-import random as rnd
-import gc
-
-import embeddings_config
-
-import bert_embed_sentence as bs
 
 
 file_path = 'hash_function_representations'
@@ -1166,7 +1159,7 @@ class HashFunctionRepresentations:
         return x
 
     def compute_subset_size_per_cluster_size(self, subset_size, cluster_size):
-        subset_size = min(subset_size, int(math.log(cluster_size, self.alpha_compute_per_cluster_size__log_scale)**2))
+        subset_size = max(subset_size, int(math.log(cluster_size, self.alpha_compute_per_cluster_size__log_scale)**2))
         return subset_size
 
     def find_neighboring_clusters_including_the_cluster(self, Cu, cluster):
@@ -1800,7 +1793,7 @@ class HashFunctionRepresentations:
             subset_size=subset_sizes.max(),
             cluster_size=path_tuples_all.size
         )
-        print(max_subset_size)
+        print('max_subset_size', max_subset_size)
         for subset_size in range(1, max_subset_size+1):
             # subset_size__mean_score_map[subset_size] = 0.0
             # subset_size__min_score_map[subset_size] = 0.0
@@ -1942,7 +1935,7 @@ class HashFunctionRepresentations:
             del rnd_subsel_bits_for_clustering
 
             if C_subsel_bits is not None:
-                print(C_subsel_bits.shape)
+                print('C_subsel_bits.shape', C_subsel_bits.shape)
             # print('alpha: {}'.format(subset_size))
             if (C_subsel_bits is not None) and (len(C_subsel_bits.shape) == 2) and (C_subsel_bits.shape[1] > 1):
                 subset_size = min(int(subset_size / math.log(C_subsel_bits.shape[1], 4.0)), subset_size)

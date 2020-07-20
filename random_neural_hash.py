@@ -1,6 +1,6 @@
 import numpy as np
 import gc
-from . import rnn_hash_model as rhm
+import rnn_hash_model as rhm
 import time
 
 
