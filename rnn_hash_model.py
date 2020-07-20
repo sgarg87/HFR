@@ -12,8 +12,11 @@ import keras.regularizers as Reg
 from keras.optimizers import Adam
 from keras.optimizers import SGD
 from keras.callbacks import EarlyStopping
-from keras_self_attention import SeqSelfAttention
-import keras.utils as keras_util
+# import keras.utils as keras_util
+
+is_self_attention = False
+if is_self_attention:
+    from keras_self_attention import SeqSelfAttention
 
 
 class RNNHashModel:
